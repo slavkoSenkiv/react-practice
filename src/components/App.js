@@ -1,11 +1,16 @@
 import React from "react";
-import Login from "./Login";
-import Register from './Register';
+import Form from "./Form";
 
-const isLoggedIn = true;
+//const newUser = false;
+const existingUser = false;
 
 function App() {
-  return <div className="container">{isLoggedIn ? <Login/> : <Register/>}</div>;
+  return (
+    <div className="container">
+      {/* {<Form userStatus={newUser}/>} */}
+      {<Form userStatus={existingUser}/>}
+    </div>
+  )
 }
 
 export default App;
