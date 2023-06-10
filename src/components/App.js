@@ -1,7 +1,9 @@
 import React from "react";
 
 function App() {
-  return <h1>Hello</h1>
+  var isDone = false;
+  const cross = {textDecoration: 'line-through'};
+  return <p style={isDone ? cross : null}>buy milk</p>
 }
 
 export default App;
