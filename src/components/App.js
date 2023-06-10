@@ -1,10 +1,11 @@
 import React from "react";
-import Form from "./Form";
+import Login from "./Login";
+import Register from './Register';
 
-const isLoggedIn = false;
+const isLoggedIn = true;
 
 function App() {
-  return <div className="container">{isLoggedIn ? <h1>Hello</h1> : <Form />}</div>;
+  return <div className="container">{isLoggedIn ? <Login/> : <Register/>}</div>;
 }
 
 export default App;
