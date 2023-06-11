@@ -17,18 +17,29 @@ import React, {useState} from "react";
 
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString('en-US', { 
+
+  const time = new Date().toLocaleTimeString('en-US', { 
     hour12: false, 
     hour: "numeric", 
     minute: "numeric",
-    second: "numeric"}));
+    second: "numeric"
+  });
+
+  const [currentTime, setCurrentTime] = useState(time);
+
   function updTime(){
-    setCurrentTime(new Date().toLocaleTimeString('en-US', { 
+    const newTime = new Date().toLocaleTimeString('en-US', { 
       hour12: false, 
       hour: "numeric", 
       minute: "numeric",
-      second: "numeric"}));
+      second: "numeric"
+    });
+
+    setCurrentTime(newTime);
   }
+
+  setInterval(updTime, 1000);
+
   return (
     <div className="container">
       <h1>{currentTime}</h1>
