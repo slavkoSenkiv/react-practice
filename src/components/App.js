@@ -1,7 +1,12 @@
 import React from "react";
 
 function App() {
-  return <h1>Hello</h1>
+  return (
+    <div className="container">
+      <h1>TIME</h1>
+      <button>Get Time</button>
+    </div>
+  );
 }
 
 export default App;
