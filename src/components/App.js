@@ -3,18 +3,19 @@ import React, { useState } from "react";
 function App() {
 
   const [headingText, setHeadingText] = useState('Hello1');
+  const [isHovered, setIsHovered] = useState(false);
 
   function handleClick(){
     console.log('clicked');
     setHeadingText('Submited');
   };
 
-  const [isHovered, setIsHovered] = useState(false);
 
   const styles = {
     backgroundColor : isHovered ? 'black' : 'white',
     color : isHovered ? 'white' : 'black'
   };
+
 
   function handleMouseOver(){
     setIsHovered(true);
