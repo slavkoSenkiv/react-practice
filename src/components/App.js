@@ -15,6 +15,7 @@ function App() {
     backgroundColor : isHovered ? 'black' : 'white',
     color : isHovered ? 'white' : 'black'
   };
+
   function handleMouseOver(){
     setIsHovered(true);
 
@@ -31,7 +32,12 @@ function App() {
       <button 
         onClick={handleClick} 
         onMouseOver={handleMouseOver} 
-        onMouseOut={handleMouseOut}>Submit</button>
+        onMouseOut={handleMouseOut}
+        style={{
+          backgroundColor: styles.backgroundColor, 
+          color: styles.color}}>
+            Submit
+      </button>
     </div>
   );
 };
