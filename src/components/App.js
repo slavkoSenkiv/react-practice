@@ -1,7 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 
 function App() {
-  return <h1>Hello</h1>
-}
+
+  const [headingText, setHeadingText] = useState('Hello1');
+
+  function handleClick(){
+    console.log('clicked');
+    setHeadingText('Submited');
+  };
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  const styles = {
+    backgroundColor : isHovered ? 'black' : 'white',
+    color : isHovered ? 'white' : 'black'
+  };
+  function handleMouseOver(){
+    setIsHovered(true);
+
+  };
+  function handleMouseOut(){
+    setIsHovered(false);
+  };
+
+
+  return (
+    <div className="container">
+      <h1>{headingText}</h1>
+      <input type="text" placeholder="What's your name?" />
+      <button 
+        onClick={handleClick} 
+        onMouseOver={handleMouseOver} 
+        onMouseOut={handleMouseOut}>Submit</button>
+    </div>
+  );
+};
 
 export default App;
