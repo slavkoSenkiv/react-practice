@@ -8,45 +8,36 @@ function App() {
   });
 
   function handleChange(event){
-
-    const {value, name} = event.target;
-
-    setFullName(prevValue =>{
-      if (name === 'fName'){
-        return {
-          fName: value,
-          lName: prevValue.lName
-        };
-      } else if (name === 'lName'){
-        return {
-          fName: prevValue.fName,
-          lName: value
-        }
-      }
-    })
-  }
+    event.target.name === 'fName'
+      ? setFullName({fName: event.target.value, lName: fullName.lName})
+      : setFullName({lName: event.target.value, fName: fullName.fName})
+  };
 
   return (
     <div className="container">
+
       <h1>Hello {fullName.fName} {fullName.lName}</h1>
+
       <form>
 
         <input 
           placeholder="First Name" 
-          name="fName" 
-          onChange={handleChange} 
-          value={fullName.fName} 
-          />
+          onChange={handleChange}
+          name="fName"
+          value={fullName.fName}
+        />
 
         <input 
           placeholder="Last Name" 
-          name="lName" 
-          onChange={handleChange} 
-          value={fullName.lName} 
-          />
+          onChange={handleChange}
+          name="lName"
+          value={fullName.lName}
+        />
 
         <button>Submit</button>
+
       </form>
+
     </div>
   );
 }
