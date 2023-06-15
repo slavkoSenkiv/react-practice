@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ToDoItem from "./ToDoItem";
+import { toBePartiallyChecked } from "@testing-library/jest-dom/matchers";
 
 function App() {
 
@@ -37,7 +38,16 @@ function App() {
 
       </div>
 
-      <ToDoItem items={items}/>
+      <div>
+            <ul>
+                {items.map((todoItem, index)=>(
+                    <ToDoItem
+                      text={todoItem}
+                      key={index}
+                    />
+                ))};
+            </ul>
+        </div>
 
     </div>
   );

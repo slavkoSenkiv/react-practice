@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 
 function ToDoItem(props){
+    const [clicked, setClicked] = useState(false);
+
+    function handleClick(){
+        setClicked(!clicked);
+    }
     return (
-        <div>
-            <ul>
-                {props.items.map((todoItem, index)=>(
-                    <li key={index}>{todoItem}</li>
-                ))};
-            </ul>
-        </div>
+        <li 
+            key={props.key}
+            onClick={handleClick}
+            style={{textDecoration: clicked ? 'line-through' : ""}}
+            // another way style={clicked ? {textDecoration: 'line-through'} : {}}
+        >
+        {props.text}</li>
     );
 };
 
