@@ -4,16 +4,16 @@ function App() {
 
   const currArr = [1, 2];
 
-  const [newArr, setNewArr] = useState(currArr);
-  const [newTask, setNewTask] = useState("");
+  const [items, setItems] = useState(currArr);
+  const [inputText, setInputText] = useState("");
 
-  function handleInput(e){
-    setNewTask(e.target.value);
+  function handleChange(e){
+    setInputText(e.target.value);
   }
 
-  function handleItemSave(){
-    setNewArr([...newArr, newTask]);
-    setNewTask("")
+  function addItem(){
+    setItems([...items, inputText]);
+    setInputText("")
   }
 
   return (
@@ -26,19 +26,19 @@ function App() {
         <input 
           type="text"
           name='newTask'
-          value={newTask}
-          onChange={handleInput}
+          value={inputText}
+          onChange={handleChange}
         />
 
         <button>
-          <span onClick={handleItemSave}>Add</span>
+          <span onClick={addItem}>Add</span>
         </button>
 
       </div>
 
       <div>
         <ul>
-          {newArr.map((task, index)=>(<li key={index}>{task}</li>))};
+          {items.map((task, index)=>(<li key={index}>{task}</li>))};
         </ul>
       </div>
 
