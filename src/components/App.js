@@ -2,11 +2,13 @@ import React, { useState } from "react";
 
 function App() {
 
-  const [newArr, updArr] = useState([1, 2]);
+  const currArr = [1, 2];
+
+  const [newArr, setNewArr] = useState(currArr);
   const [newTask, setNewTask] = useState("");
 
   function addToList(){
-    updArr(prevArr=>[...prevArr, newTask]);
+    setNewArr(prevArr=>[newTask, ...prevArr]);
     setNewTask("");
   }
 
