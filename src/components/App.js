@@ -16,6 +16,16 @@ function App() {
   function addItem(){
     setItems([...items, inputText]);
     setInputText("")
+    console.log('item added');
+  }
+
+  function deleteItem(id){
+    //console.log('item is deleted');
+    setItems(prevValue=>{
+        return prevValue.filter((item, index)=>{
+          return index !== id;
+        })
+    })
   }
 
   return (
@@ -26,7 +36,7 @@ function App() {
       <div className="form">
 
         <input 
-          type="text"ф
+          type="text"
           name='newTask'
           value={inputText}
           onChange={handleChange}
@@ -39,15 +49,17 @@ function App() {
       </div>
 
       <div>
-            <ul>
-                {items.map((todoItem, index)=>(
-                    <ToDoItem
-                      text={todoItem}
-                      key={index}
-                    />
-                ))};
-            </ul>
-        </div>
+        <ul>
+          {items.map((todoItem, index)=>(
+            <ToDoItem
+              text={todoItem}
+              key={index}
+              id={index}
+              onChecked={deleteItem}
+            />
+          ))};
+        </ul>
+      </div>
 
     </div>
   );
