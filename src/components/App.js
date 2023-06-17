@@ -1,61 +1,55 @@
 import React, { useState } from "react";
 import ToDoItem from "./ToDoItem";
-import { toBePartiallyChecked } from "@testing-library/jest-dom/matchers";
 
 function App() {
+  
+const taskArr = ['first task', 'second task'];
 
-  const currArr = [1, 2];
+const [newArr, setNewArr] = useState(taskArr);
+const [newTask, setNewTask] = useState("");
 
-  const [items, setItems] = useState(currArr);
-  const [inputText, setInputText] = useState("");
+function handleChange(event){
+  setNewTask(event.target.value);
+}
 
-  function handleChange(e){
-    setInputText(e.target.value);
-  }
+function addNewTask(){
+  setNewArr(prevArr => [...prevArr, newTask]);
+  setNewTask("");
+}
 
-  function addItem(){
-    setItems([...items, inputText]);
-    setInputText("")
-    console.log('item added');
-  }
-
-  function deleteItem(id){
-    //console.log('item is deleted');
-    setItems(prevValue=>{
-        return prevValue.filter((item, index)=>{
-          return index !== id;
-        })
-    })
-  }
+function deleteTask(id){
+  setNewArr(prevArr=>{
+    return prevArr.filter((task, index)=>{
+      return index !== id;
+    });
+});
+}
 
   return (
     <div className="container">
 
-      <div className="heading"><h1>To-Do List</h1></div>
+      <div className="heading">
+        <h1>To-Do List</h1>
+      </div>
 
       <div className="form">
-
         <input 
           type="text"
-          name='newTask'
-          value={inputText}
           onChange={handleChange}
+          value={newTask}
         />
-
-        <button>
-          <span onClick={addItem}>Add</span>
+        <button onClick={addNewTask}>
+          <span>Add</span>
         </button>
-
       </div>
 
       <div>
         <ul>
-          {items.map((todoItem, index)=>(
-            <ToDoItem
-              text={todoItem}
-              key={index}
+          {newArr.map((task, index)=>(
+            <ToDoItem 
+              text={task}
+              onChecked={deleteTask}
               id={index}
-              onChecked={deleteItem}
             />
           ))};
         </ul>
